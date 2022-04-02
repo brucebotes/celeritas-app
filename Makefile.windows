@@ -1,4 +1,4 @@
-BINARY_NAME=celeritasApp.exe
+BINARY_NAME=${APP_NAME}.exe
 
 ## build: builds all binaries
 build:
