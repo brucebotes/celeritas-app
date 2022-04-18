@@ -1,11 +1,13 @@
 {{extends "./layouts/base.jet"}}
 
-{{block browserTitle()}}Welcom{{end}}
+{{block browserTitle()}}Welcome{{end}}
 
 {{block css()}}
+
 {{end}}
 
 {{block pageContent()}}
+
 <div class="col text-center">
     <div class="d-flex align-items-center justify-content-center mt-5">
         <div>
@@ -15,10 +17,12 @@
             <small class="text-muted">Go build something awesome</small>
         </div>
     </div>
-    <hr>
+
 </div>
+
 {{end}}
 
 
 {{block js()}}
+
 {{end}}
