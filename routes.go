@@ -8,12 +8,16 @@ import (
 
 func (a *application) routes() *chi.Mux {
 	// middleware must come before any routes
+	//a.use(a.Middleware.CheckRemember)
 
 	// add routes here
 	a.get("/", a.Handlers.Home)
 
 	//svelte views routes
 	//a.get("/svh/{module}", a.Handlers.SvelteViews)
+
+	//test cache api's with this page
+	//a.get("/cache-test", a.Handlers.ShowCachePage)
 
 	// Mount User login/out routes
 	//a.App.Routes.Mount("/users", a.UsersRoutes())
@@ -22,7 +26,8 @@ func (a *application) routes() *chi.Mux {
 	// mount routes from celeritas
 	//a.App.Routes.Mount("/celeritas", celeritas.Routes())
 	// mount api routes - these are exempt from nosurf middleware
-	a.App.Routes.Mount("/api", a.ApiRoutes())
+	// create api template with celeritas make cacheapi
+	//a.App.Routes.Mount("/api", a.ApiRoutes())
 	// Mount websocket/Pusher routes
 	//a.App.Routes.Mount("/pusher", a.PusherRoutes())
 	//a.get("/private-message", a.Handlers.WsSendPrivateMessage)
@@ -31,7 +36,6 @@ func (a *application) routes() *chi.Mux {
 	// static routes
 	fileServer := http.FileServer(http.Dir("./public"))
 	a.App.Routes.Handle("/public/*", http.StripPrefix("/public", fileServer))
-	a.get("/", a.Handlers.Home)
 
 	return a.App.Routes
 }
