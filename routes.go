@@ -15,6 +15,8 @@ func (a *application) routes() *chi.Mux {
 
 	//svelte views routes
 	//a.get("/svh/{module}", a.Handlers.SvelteViews)
+	// pass all svelte subroutes back so that svelte can process them
+	//a.get("/svh/{module}/*", a.Handlers.SvelteViews)
 
 	//test cache api's with this page
 	//a.get("/cache-test", a.Handlers.ShowCachePage)
