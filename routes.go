@@ -18,6 +18,11 @@ func (a *application) routes() *chi.Mux {
 	// pass all svelte subroutes back so that svelte can process them
 	//a.get("/svh/{module}/*", a.Handlers.SvelteViews)
 
+	//JSBundled views routes
+	//a.get("/jsb/{module}", a.Handlers.JSBundleViews)
+	// pass all JSBundled views subroutes back so that JSBundled root  can process them
+	//a.get("/jsb/{module}/*", a.Handlers.JSBundleViews)
+
 	//test cache api's with this page
 	//a.get("/cache-test", a.Handlers.ShowCachePage)
 
