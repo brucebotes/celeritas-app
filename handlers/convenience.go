@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/brucebotes/celeritas"
@@ -9,6 +10,16 @@ import (
 
 func (h *Handlers) render(w http.ResponseWriter, r *http.Request, tmpl string, variables, data interface{}) error {
 	return h.App.Render.Page(w, r, tmpl, variables, data)
+}
+
+func (h *Handlers) printTemplateError(w http.ResponseWriter, err error) {
+	_, _ = fmt.Fprint(w, fmt.Sprintf(`
+		<html>
+		  <body>
+					<p style="color: red">Error executing template: %s</p>
+			</body>
+		</html>
+	`, err))
 }
 
 func (h *Handlers) sessionPut(ctx context.Context, key string, val interface{}) {
