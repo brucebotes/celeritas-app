@@ -71,6 +71,7 @@ func CreateSqliteUpperConnection(path string) (db2.Session, error) {
 	return db, err
 }
 
+/* version for integer ID's
 func getInsertID(i db2.ID) int {
 	idType := fmt.Sprintf("%T", i) // returns the type of i
 	if idType == "int64" {
@@ -78,6 +79,18 @@ func getInsertID(i db2.ID) int {
 	}
 
 	return i.(int)
+}
+*/
+
+// UUID ID version - return string
+func getInsertID(i db2.ID) string {
+	idType := fmt.Sprintf("%T", i) // returns the type of i
+	if idType != "string" {
+		fmt.Println(">>> Invalid ID type - expecting string/uuid")
+		return ""
+	}
+
+	return i.(string)
 }
 
 // take a struct and convert it into a []byte
